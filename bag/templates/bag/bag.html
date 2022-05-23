@@ -1,8 +1,8 @@
 {% extends "base.html" %}
-{& load static &}
+{% load static %}
 
 {% block page_header %}
-    <div class="container container-header">
+    <div class="container header-container">
         <div class="row">
             <div class="col"></div>
         </div>
@@ -38,7 +38,7 @@
                             {% for item in bag_items %}
                                 <tr>
                                     <td class="p-3 w-25">
-                                        <img class="img-fluid rounder" src="{{ item.product.image.url }}">
+                                        <img class="img-fluid rounded" src="{{ item.product.image.url }}">
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0"><strong>{{ item.product.name }}</strong></p>
@@ -46,7 +46,7 @@
                                         <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">{{ item.product.price }}</p>
+                                        <p class="my-0">${{ item.product.price }}</p>
                                     </td>
                                     <td class="py-3 w-25">
                                         <p class="my-0">{{ item.quantity }}</p>
@@ -88,11 +88,12 @@
                     </div>
                 {% else %}
                     <p class="lead mb-5">Your bag is empty.</p>
-                    <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg"></a>
+                    <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>
                         <span class="text-uppercase">Keep Shopping</span>
+                    </a>
                 {% endif %}
             </div>
         </div>
